@@ -22,8 +22,7 @@ module MongoRecord
     def create_pk(row)
       return row if row[:_id]
       row.delete(:_id)          # in case it is nil
-      row['_id'] ||= BSON::ObjectId
-.new
+      row['_id'] ||= BSON::ObjectId.new
       row
     end
   end

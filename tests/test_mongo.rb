@@ -65,19 +65,13 @@ class MongoTest < Test::Unit::TestCase
     @@playlists.remove
 
     # Manually insert data without using MongoRecord::Base
-    @@tracks.insert({:_id => BSON::ObjectId
-.new, :artist => 'Thomas Dolby', :album => 'Aliens Ate My Buick', :song => 'The Ability to Swing'})
-    @@tracks.insert({:_id => BSON::ObjectId
-.new, :artist => 'Thomas Dolby', :album => 'Aliens Ate My Buick', :song => 'Budapest by Blimp'})
-    @@tracks.insert({:_id => BSON::ObjectId
-.new, :artist => 'Thomas Dolby', :album => 'The Golden Age of Wireless', :song => 'Europa and the Pirate Twins'})
-    @@tracks.insert({:_id => BSON::ObjectId
-.new, :artist => 'XTC', :album => 'Oranges & Lemons', :song => 'Garden Of Earthly Delights', :track => 1})
-    @mayor_id = BSON::ObjectId
-.new
+    @@tracks.insert({:_id => BSON::ObjectId.new, :artist => 'Thomas Dolby', :album => 'Aliens Ate My Buick', :song => 'The Ability to Swing'})
+    @@tracks.insert({:_id => BSON::ObjectId.new, :artist => 'Thomas Dolby', :album => 'Aliens Ate My Buick', :song => 'Budapest by Blimp'})
+    @@tracks.insert({:_id => BSON::ObjectId.new, :artist => 'Thomas Dolby', :album => 'The Golden Age of Wireless', :song => 'Europa and the Pirate Twins'})
+    @@tracks.insert({:_id => BSON::ObjectId.new, :artist => 'XTC', :album => 'Oranges & Lemons', :song => 'Garden Of Earthly Delights', :track => 1})
+    @mayor_id = BSON::ObjectId.new
     @@tracks.insert({:_id => @mayor_id, :artist => 'XTC', :album => 'Oranges & Lemons', :song => 'The Mayor Of Simpleton', :track => 2})
-    @@tracks.insert({:_id => BSON::ObjectId
-.new, :artist => 'XTC', :album => 'Oranges & Lemons', :song => 'King For A Day', :track => 3})
+    @@tracks.insert({:_id => BSON::ObjectId.new, :artist => 'XTC', :album => 'Oranges & Lemons', :song => 'King For A Day', :track => 3})
 
     @mayor_str = "artist: XTC, album: Oranges & Lemons, song: The Mayor Of Simpleton, track: 2"
     @mayor_song = 'The Mayor Of Simpleton'
@@ -462,7 +456,6 @@ class MongoTest < Test::Unit::TestCase
     t = Track.find_by_song('King For A Day')
     tid = t._id
     # first is string id, second is ObjectId
-
     records = Track.find([@mayor_id, tid]).to_a
     assert_equal 2, records.size
   end
