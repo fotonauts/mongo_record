@@ -65,15 +65,20 @@ end
 
 class String
 
-  # Convert this String to an ObjectID.
+  # Convert this String to an ObjectId
+.
   def to_oid
-    BSON::ObjectID.legal?(self) ? BSON::ObjectID.from_string(self) : self
+    BSON::ObjectId
+.legal?(self) ? BSON::ObjectId
+.from_string(self) : self
   end
 end
 
-class BSON::ObjectID
+class BSON::ObjectId
 
-  # Convert this object to an ObjectID.
+
+  # Convert this object to an ObjectId
+.
   def to_oid
     self
   end
